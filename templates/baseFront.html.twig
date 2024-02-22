@@ -1,13 +1,15 @@
+
 <!DOCTYPE html>
 <html>
     <head>
+        
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
-            <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assetsFront/vendor/bootstrap/css/bootstrap.min.css') }}">
             <link rel="stylesheet" href="{{ asset('assetsFront/css/fontawesome.css') }}">
             <link rel="stylesheet" href="{{ asset('assetsFront/css/templatemo-snapx-photography.css') }}">
             <link rel="stylesheet" href="{{ asset('assetsFront/css/owl.css') }}">
@@ -17,24 +19,29 @@
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
-            <script src=" {{ asset ('assetsFront/vendor/jquery/jquery.min.js') }}"></script>
-            <script src="{{ asset ('assetsFront/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        
-            <!-- Core plugin JavaScript-->
-            <script src="{{ asset ('assetsFront/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-        
-            <!-- Custom scripts for all pages-->
-            <script src="{{ asset ('assetsFront/js/sb-admin-2.min.js') }}"></script>
-        
-            <!-- Page level plugins -->
-            <script src="{{ asset ('assetsFront/vendor/chart.js/Chart.min.js') }}"></script>
-        
-            <!-- Page level custom scripts -->
-            <script src="{{ asset ('assetsFront/js/demo/chart-area-demo.js') }}"></script>
-            <script src="{{ asset ('assetsFront/js/demo/chart-pie-demo.js') }}"></script>
+            <script src="{{ asset('assetsFront/vendor/jquery/jquery.min.js') }}"></script>
+            <script src="{{ asset('assetsFront/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+            
+            <script src="{{asset('assetsFront/js/isotope.min.js') }}"></script>
+
+            <script src="{{asset('assetsFront/js/owl-carousel.js') }}"></script>
+            <script src="{{asset('assetsFront/js/isotope.min.js') }}"></script>
+            <script src="{{asset('assetsFront/js/tabs.js') }}"></script>
+
+            <script src="{{asset('assetsFront/js/popup.js') }}"></script>
+
+            <script src="{{asset('assetsFront/js/custom.js') }}"></script>
+
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% include "navBar.html.twig" %}
+
+        {% block body %}
+        <!-- Trigger/Open The Modal -->
+
+        {# Display flash messages #}
+{% endblock %}
+{% include "footer.html.twig"%}
     </body>
 </html>
