@@ -44,9 +44,10 @@ class ReclamationController extends AbstractController
         
         if ($form->isSubmitted() && $form->isValid()) {
             if($this->validateReclamationData($reclamation)){
-                $reclamation->setCreatedAt(new \DateTimeImmutable());
+                $reclamation->SetCreatedAt(new \DateTimeImmutable() );
                 $entityManager->persist($reclamation);
                 $entityManager->flush();
+                //$this->tryVoid($reclamation,$entityManager);
                 $this->addFlash('success', 'your message is sent!');
                 return $this->redirectToRoute('app_reclamation_new', [], Response::HTTP_SEE_OTHER);
             }else{
@@ -133,5 +134,10 @@ class ReclamationController extends AbstractController
     
         return true;
     }
+    function tryVoid(Reclamation $reclamation,EntityManagerInterface $entityManager){
 
+        $entityManager->persist($reclamation);
+        $entityManager->flush();
+        dd($reclamation);
+    }
 }

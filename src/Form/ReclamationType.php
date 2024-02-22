@@ -7,11 +7,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 
 class ReclamationType extends AbstractType
@@ -68,8 +69,13 @@ class ReclamationType extends AbstractType
                     new Length(['min' => 1, 'minMessage' => 'Message should have at least one character.']),
                 ],
                 'required' => false,
-
             ])
+            ->add('createdAt', DateType::class, [
+                'widget' => 'choice',
+                'label'  => false, // Set label to false to hide it
+                'input'  => 'datetime_immutable',
+                'attr'   => ['style' => 'display:none;'], // Add this line to hide the field
+            ]);
         ;
     }
 
